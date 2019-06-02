@@ -1,0 +1,33 @@
+//------------------------------------------------------------------------------
+// Settings
+//------------------------------------------------------------------------------
+Settings
+{
+    #if __WINDOWS__
+        #import TMP
+        .Environment = { "PATH=$VS_PATH$",
+                            "TMP=$TMP$",
+                            "SystemRoot=C:\Windows" }
+        .CachePath = "$TMP$\.fbuild.cache"
+    #else
+        .CachePath = "/tmp/.fbuild.cache"
+    #endif
+    .AllowDBMigration_Experimental = true
+}
+
+#if __WINDOWS__
+    #include "fastbuild/Windows/Windows.bff"
+#endif
+
+//------------------------------------------------------------------------------
+// Compilers 
+//------------------------------------------------------------------------------
+#if USING_GCC
+    #include "fastbuild/GCC/GCC.bff"
+#endif
+#if USING_CLANG
+    #include "fastbuild/Clang/Clang.bff"
+#endif
+#if USING_VS
+    #include "fastbuild/VisualStudio/VisualStudio.bff"
+#endif

@@ -1,0 +1,23 @@
+#if __WINDOWS__
+    #define USING_VS
+#endif
+
+#if __LINUX__
+    #define USING_GCC
+#endif
+
+#define USING_CLANG
+
+#if USING_VS
+    // Select desired Visual Studio version
+    //------------------------------------------------------------------------------
+    //#define USING_VS2019
+    #define USING_VS2017
+    //#define USING_VS2015
+    //#define USING_VS2013
+#endif
+
+.Projects = {}
+.Compilers = { "VC", "Clang", "GCC" }
+.Archs = { "x86", "x64" }
+.Configs = { "Debug", "Release", "Profile" }
